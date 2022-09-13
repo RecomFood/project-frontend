@@ -1,21 +1,22 @@
-import React, {useEffect} from 'react';
-import axios from 'axios';
+import React, { useEffect } from "react";
+import axios from "axios";
 
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
 
-// test
+// test1
 //axios.defaults.withCredentials = true;
 
 function App() {
   useEffect(() => {
-	  axiosTest();
+    axiosTest();
   });
-  
+
   const axiosTest = () => {
-	  axios.get("http://54.151.0.147:5050/")
-	  .then(res => console.log(res.data))
-	  .catch(err => console.log(err));
+    axios
+      .get("http://54.151.0.147:5050/")
+      .then((res) => console.log(res.data))
+      .catch((err) => console.log(err));
   };
 
   return (
