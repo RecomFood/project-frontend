@@ -1,0 +1,14 @@
+h1 {
+  font-family: "BMJUA", cursive !important;
+  font-size: 70px;
+  font-weight: 400;
+  border: none;
+  border-radius: 5px;
+  color: white;
+}
+
+.inputTable {
+  width: 100%;
+  text-align: center;
+  margin: 0 0 60px 0;
+}

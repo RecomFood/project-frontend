@@ -1,0 +1,28 @@
+.TextBox td {
+  font-size: 30px;
+  font-weight: 600;
+  color: white;
+  padding-right: 5%;
+  vertical-align: center;
+  line-height: 0;
+}
+
+.TextBox td input {
+  height: 35px;
+  width: 100%;
+  border-radius: 5px;
+  color: rgb(56, 56, 56) !important;
+  font-weight: 600;
+  font-size: 14px;
+  text-shadow: none !important;
+}
+
+.TextBox td .red {
+  color: red;
+  text-shadow: 1px 1px 2px pink;
+}
+
+.TextBox td .yellow {
+  color: blue;
+  text-shadow: 1px 1px 2px yellowgreen;
+}
