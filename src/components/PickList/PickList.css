@@ -4,7 +4,6 @@
   width: 280px;
   text-align: left;
   flex-wrap: nowrap;
-  overflow-x: scroll;
 }
 
 .element {

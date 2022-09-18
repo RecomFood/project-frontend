@@ -1,14 +1,34 @@
 import React from "react";
 import "./TextBox.css";
 
-export default function TextBox({ text, color, placeholder }) {
+export default function TextBox({ text, color, placeholder, func }) {
+  const add = (e) => {
+    if (e.key === "Enter") {
+      if (e.nativeEvent.isComposing === false) {
+        const value = e.target.value;
+
+        if (value === "" || value === undefined) {
+          alert("값을 입력해주세요!");
+          return;
+        }
+
+        func(value, 0);
+      }
+    }
+  };
+
   return (
     <tr className="TextBox">
       <td>
         <p className={color}>{text}</p>
       </td>
       <td>
-        <input className={color} type="text" placeholder={placeholder}></input>
+        <input
+          className={color}
+          type="text"
+          placeholder={placeholder}
+          onKeyDown={add}
+        ></input>
       </td>
     </tr>
   );

@@ -1,14 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Main.css";
 
 import Button from "../../components/Button/Button";
 import TextBox from "../../components/TextBox/TextBox";
-import PickList from "../../components/PickList/PickList";
+import { Pick, PickList } from "../../components/PickList/PickList";
 
 export default function Main() {
-  const func = () => {
-    console.log("Hi");
+  const [likeList, setLikeList] = useState([]);
+  const [dislikeList, setDislikeList] = useState([]);
+  const [a, setA] = useState(1);
+
+  const setLike = (name, type) => {
+    // 0이면 추가, 1이면 삭제
+    if (type === 0) setLikeList([...likeList, name]);
+    else setLikeList(likeList.filter((v) => v !== name));
+  };
+
+  const setDislike = (name, type) => {
+    if (type === 0) setDislikeList([...dislikeList, name]);
+    else setDislikeList(dislikeList.filter((v) => v !== name));
   };
 
   return (
@@ -20,19 +31,21 @@ export default function Main() {
             <tbody>
               <TextBox
                 text="호"
-                color={"yellow"}
+                color={"blue"}
                 placeholder={"키워드를 작성하고 Enter를 누르세요! 예) 김치"}
+                func={setLike}
               />
-              <PickList name="like" />
+              <PickList name="like" list={likeList} func={setLike} />
               <TextBox
                 text="불호"
                 color={"red"}
                 placeholder={"키워드를 작성하고 Enter를 누르세요! 예) 탕"}
+                func={setDislike}
               />
-              <PickList name="dislike" />
+              <PickList name="dislike" list={dislikeList} func={setDislike} />
             </tbody>
           </table>
-          <Button text="뭐 먹지?" func={func} />
+          <Button text="뭐 먹지?" />
         </div>
         {/* <Link to="/">main</Link>
         <Link to="/result">result</Link> */}
