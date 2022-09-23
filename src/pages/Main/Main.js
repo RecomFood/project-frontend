@@ -1,15 +1,14 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 import "./Main.css";
 
-import Button from "../../components/Button/Button";
 import TextBox from "../../components/TextBox/TextBox";
-import { Pick, PickList } from "../../components/PickList/PickList";
+import { PickList } from "../../components/PickList/PickList";
 
 export default function Main() {
   const [likeList, setLikeList] = useState([]);
   const [dislikeList, setDislikeList] = useState([]);
-  const [a, setA] = useState(1);
 
   const setLike = (name, type) => {
     // 0이면 추가, 1이면 삭제
@@ -21,6 +20,10 @@ export default function Main() {
     if (type === 0) setDislikeList([...dislikeList, name]);
     else setDislikeList(dislikeList.filter((v) => v !== name));
   };
+
+  async function getValue() {
+    let response = await axios.post("http://54.151.0.147:5050/" + "getValue");
+  }
 
   return (
     <div className="main">
@@ -45,10 +48,10 @@ export default function Main() {
               <PickList name="dislike" list={dislikeList} func={setDislike} />
             </tbody>
           </table>
-          <Button text="뭐 먹지?" />
+          <Link className="submitButton" to="/result" onClick={getValue}>
+            뭐 먹지?
+          </Link>
         </div>
-        {/* <Link to="/">main</Link>
-        <Link to="/result">result</Link> */}
       </div>
     </div>
   );
