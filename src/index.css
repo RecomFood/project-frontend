@@ -9,7 +9,7 @@
 
 body {
   margin: 0;
-  font-family: "BMJUA", cursive !important;
+  font-family: "BMJUA", cursive;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
