@@ -3,6 +3,7 @@ import "./TextBox.css";
 
 export default function TextBox({ text, color, placeholder, func }) {
   const add = (e) => {
+    console.log(e.key);
     if (e.key === "Enter") {
       if (e.nativeEvent.isComposing === false) {
         const value = e.target.value;
