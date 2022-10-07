@@ -26,6 +26,7 @@ export default function TextBox({ text, color, placeholder, func }) {
       <td>
         <input
           className={color}
+          enterkeyhint="search"
           type="text"
           placeholder={placeholder}
           onKeyDown={add}
