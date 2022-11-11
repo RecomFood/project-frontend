@@ -1,12 +1,23 @@
 /* global kakao */
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import "./Result.css";
 
 const Result = () => {
+  let { food } = useParams();
   const [lat, setLat] = useState(-1);
   const [lng, setLng] = useState(-1);
   const [map, setMap] = useState(-1);
   const infowindow = new kakao.maps.InfoWindow({ zIndex: 1 });
+
+  function getURLParams() {
+    let url = window.search + "";
+    var result = {};
+    url.replace(/[?&]{1}([^=&#]+)=([^&#]*)/g, function (s, k, v) {
+      result[k] = decodeURIComponent(v);
+    });
+    return result;
+  }
 
   // get GPS postion and set Positions
   const getPosition = async () => {
@@ -100,7 +111,7 @@ const Result = () => {
         page: i,
       };
 
-      places.keywordSearch("김치찌개", callback, options);
+      places.keywordSearch(food.substring(1, food.length), callback, options);
     }
   };
 
@@ -125,6 +136,7 @@ const Result = () => {
 
   return (
     <div className="mapWrapper">
+      <h1> 오늘 {food.substring(1, food.length)} 어때요? </h1>
       <div
         className="map"
         style={{
