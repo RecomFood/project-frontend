@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
 import "./Main.css";
 
@@ -21,8 +20,20 @@ export default function Main() {
     else setDislikeList(dislikeList.filter((v) => v !== name));
   };
 
+  // check response
   async function getValue() {
-    let response = await axios.post("http://54.151.0.147:5050/" + "getValue");
+    const info = {
+      like: likeList,
+      dislike: dislikeList,
+    };
+
+    await axios
+      .post("http://localhost:5050/getFood", info)
+      .then((res) => {
+        window.location.href = `/result:${res.data.name}`;
+        // console.log(res.data);
+      })
+      .catch((err) => console.log(err));
   }
 
   return (
@@ -48,9 +59,9 @@ export default function Main() {
               <PickList name="dislike" list={dislikeList} func={setDislike} />
             </tbody>
           </table>
-          <Link className="submitButton" to="/result" onClick={getValue}>
+          <button className="submitButton" onClick={getValue}>
             뭐 먹지?
-          </Link>
+          </button>
         </div>
       </div>
     </div>
