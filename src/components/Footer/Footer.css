@@ -5,6 +5,7 @@ footer {
   justify-content: center;
   align-items: center;
   height: 10vh;
+  min-height: 70px;
   font-size: 18px;
 }
 
